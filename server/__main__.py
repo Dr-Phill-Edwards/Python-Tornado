@@ -1,8 +1,8 @@
 import sys
 from server.Server import Server
 from tornado.ioloop import IOLoop
+from tornado.options import define, options
 
-lastarg = sys.argv[len(sys.argv) - 1]
-port = int(lastarg) if lastarg.isnumeric() else 8888
-application = Server(port)
+define("port", default=8888, help="Listener port")
+application = Server(options.port)
 IOLoop.current().start()

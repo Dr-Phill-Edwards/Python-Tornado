@@ -1,5 +1,5 @@
 #! /bin/bash
 
 . $HOME/.functions
-pythonp -m server 8888
+pythonp -m server port 8888
 
