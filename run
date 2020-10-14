@@ -1,0 +1,5 @@
+#! /bin/bash
+
+. $HOME/.functions
+pythonp -m server 8888
+
