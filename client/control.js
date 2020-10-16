@@ -16,18 +16,26 @@ function onlogin() {
     });
 }
 
+
+var websocket = null;
 var timer = null;
 var counter = 1;
 function ontimer() {
     var button = document.getElementById('timer');
     if (button.value == 'Start') {
-        document.getElementById('messages').innerHTML = 'Messages Poo\n';
+        document.getElementById('messages').innerHTML = 'Messages\n';
         button.value = 'Stop';
+        websocket = new WebSocket('ws://localhost:8888/wsmessage');
+        websocket.onmessage = function(event) {
+            document.getElementById('messages').innerHTML += event.data + '\n';
+        }
         timer = setInterval(function() {
-            document.getElementById('messages').innerHTML += 'Message ' + counter++ + '\n';
+            websocket.send("Chat " + counter);
+            counter++;
         }, 2000);
     } else {
         clearInterval(timer);
+        websocket.close();
         button.value = 'Start';
         counter = 1;
     }
