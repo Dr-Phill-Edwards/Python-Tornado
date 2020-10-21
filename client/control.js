@@ -58,7 +58,7 @@ signIn.renderEl({
     if (res.status === 'SUCCESS') {
         accesstoken = res.tokens.accessToken.accessToken;
         var idtoken = res.tokens.idToken;
-        document.getElementById('login-container').innerHTML = "<h3>" + idtoken.claims.email + " Logged In</h3><br/>" + accesstoken;
+        document.getElementById('login-container').innerHTML = "<h3>" + idtoken.claims.email + " Logged In</h3>";
         document.getElementById('token').value = accesstoken;
     } else {
         alert('fail);')
