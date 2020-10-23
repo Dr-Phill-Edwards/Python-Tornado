@@ -18,4 +18,4 @@ class LoginHandler(RequestHandler):
             print(response)
             self.write("Welcome {}\n".format(email))
         except:
-            self.send_error(403, 'Unauthorized')
+            self.send_error(403)

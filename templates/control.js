@@ -27,7 +27,7 @@ function ontimer() {
     if (button.value == 'Start') {
         document.getElementById('messages').innerHTML = 'Messages\n';
         button.value = 'Stop';
-        websocket = new WebSocket('ws://localhost:8888/wsmessage');
+        websocket = new WebSocket('ws://localhost:8080/wsmessage');
         websocket.onmessage = function(event) {
             document.getElementById('messages').innerHTML += event.data + '\n';
         }
@@ -44,10 +44,10 @@ function ontimer() {
 }
 
 var signIn = new OktaSignIn({
-    baseUrl: 'https://dev-436256.okta.com',
-    clientId: '0oaavsqp2YFRRTL5x5d5',
+    baseUrl: 'http://${yourOktaDomain}',
+    clientId: '${yourClientId}',
     authParams: {
-        issuer: 'https://dev-436256.okta.com/oauth2/default',
+        issuer: 'https://${yourOktaDomain}/oauth2/default',
         responseType: ['token', 'id_token']
     }
 });
